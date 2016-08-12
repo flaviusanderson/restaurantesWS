@@ -13,20 +13,22 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-
-import br.com.informati.restaurantes.http.MesaHttp;
 import br.com.informati.restaurantes.http.PracaAlimentacaoHttp;
-import br.com.informati.restaurantes.modelo.MesaEntity;
+import br.com.informati.restaurantes.http.RestauranteHttp;
 import br.com.informati.restaurantes.modelo.PracaAlimentacaoEntity;
+import br.com.informati.restaurantes.modelo.RestauranteEntity;
 import br.com.informati.restaurantes.repositorio.PracaAlimentacaoDAO;
+import br.com.informati.restaurantes.repositorio.RestauranteDAO;
 
 /**
  * @author Flavius
  *
  */
+@Path("/pracaAlimentacao")
 public class PracaAlimentacaoController implements IGenericoController<PracaAlimentacaoHttp> {
 
-	public final PracaAlimentacaoDAO repositorio = new PracaAlimentacaoDAO();
+	private final PracaAlimentacaoDAO repositorio = new PracaAlimentacaoDAO();
+	private final RestauranteDAO repositorioRestaurante = new RestauranteDAO();
 
 	@Override
 	@POST
@@ -39,11 +41,17 @@ public class PracaAlimentacaoController implements IGenericoController<PracaAlim
 
 		try {
 
-			//entidade.setId(praca.getId());
+			// entidade.setId(praca.getId());
 			entidade.setNome(praca.getNome());
 
-			// TODO Restaurantes
-			// entidade.setRestaurantes(restaurantes);
+			List<RestauranteEntity> listaRestaurantes = new ArrayList<RestauranteEntity>();
+			for (RestauranteHttp restauranteHttp : praca.getRestaurantes()) {
+				RestauranteEntity restauranteEntity = new RestauranteEntity();
+				restauranteEntity = repositorioRestaurante.consultarPorId(restauranteHttp.getId());
+				if (restauranteEntity != null)
+					listaRestaurantes.add(restauranteEntity);
+			}
+			entidade.setRestaurantes(listaRestaurantes);
 
 			entidade.setIdUsuario(praca.getIdUsuario());
 			entidade.setUltimaAtualizacao(new Timestamp(praca.getUltimaAtualizacao().getTime()));
@@ -74,8 +82,14 @@ public class PracaAlimentacaoController implements IGenericoController<PracaAlim
 			entidade.setId(praca.getId());
 			entidade.setNome(praca.getNome());
 
-			// TODO Restaurantes
-			// entidade.setRestaurantes(restaurantes);
+			List<RestauranteEntity> listaRestaurantes = new ArrayList<RestauranteEntity>();
+			for (RestauranteHttp restauranteHttp : praca.getRestaurantes()) {
+				RestauranteEntity restauranteEntity = new RestauranteEntity();
+				restauranteEntity = repositorioRestaurante.consultarPorId(restauranteHttp.getId());
+				if (restauranteEntity != null)
+					listaRestaurantes.add(restauranteEntity);
+			}
+			entidade.setRestaurantes(listaRestaurantes);
 
 			entidade.setIdUsuario(praca.getIdUsuario());
 			entidade.setUltimaAtualizacao(new Timestamp(praca.getUltimaAtualizacao().getTime()));

@@ -50,7 +50,6 @@ public class MesaHttp extends GenericoHttp {
 	 */
 	public MesaHttp() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -59,7 +58,6 @@ public class MesaHttp extends GenericoHttp {
 	 */
 	public MesaHttp(Date ultimaAtualizacao, int idUsuario) {
 		super(ultimaAtualizacao, idUsuario);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

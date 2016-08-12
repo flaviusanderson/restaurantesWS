@@ -13,10 +13,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-
-import br.com.informati.restaurantes.http.MesaHttp;
 import br.com.informati.restaurantes.http.RestauranteHttp;
-import br.com.informati.restaurantes.modelo.MesaEntity;
 import br.com.informati.restaurantes.modelo.RestauranteEntity;
 import br.com.informati.restaurantes.repositorio.RestauranteDAO;
 
@@ -24,9 +21,10 @@ import br.com.informati.restaurantes.repositorio.RestauranteDAO;
  * @author Flavius
  *
  */
+@Path("/restaurante")
 public class RestauranteController implements IGenericoController<RestauranteHttp> {
 	
-	public final RestauranteDAO repositorio = new RestauranteDAO();
+	private final RestauranteDAO repositorio = new RestauranteDAO();
 
 	@Override
 	@POST

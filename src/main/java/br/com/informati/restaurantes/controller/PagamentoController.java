@@ -13,14 +13,10 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-
-import br.com.informati.restaurantes.http.CategoriaHttp;
 import br.com.informati.restaurantes.http.PagamentoHttp;
-import br.com.informati.restaurantes.modelo.CategoriaEntity;
 import br.com.informati.restaurantes.modelo.FormaPagamentoEntity;
 import br.com.informati.restaurantes.modelo.PagamentoEntity;
 import br.com.informati.restaurantes.modelo.PedidoEntity;
-import br.com.informati.restaurantes.modelo.RestauranteEntity;
 import br.com.informati.restaurantes.repositorio.FormaPagamentoDAO;
 import br.com.informati.restaurantes.repositorio.PagamentoDAO;
 import br.com.informati.restaurantes.repositorio.PedidoDAO;
@@ -29,6 +25,7 @@ import br.com.informati.restaurantes.repositorio.PedidoDAO;
  * @author Flavius
  *
  */
+@Path("/pagamento")
 public class PagamentoController implements IGenericoController<PagamentoHttp> {
 
 	private final PagamentoDAO repositorio = new PagamentoDAO();

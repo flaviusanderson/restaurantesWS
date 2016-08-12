@@ -6,9 +6,7 @@ package br.com.informati.restaurantes.http;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import br.com.informati.restaurantes.modelo.FormaPagamentoEntity;
-import br.com.informati.restaurantes.modelo.ItemPedidoEntity;
 import br.com.informati.restaurantes.modelo.PagamentoEntity;
 
 /**
@@ -53,7 +51,6 @@ public class FormaPagamentoHttp extends GenericoHttp {
 	 */
 	public FormaPagamentoHttp() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param ultimaAtualizacao
@@ -61,7 +58,6 @@ public class FormaPagamentoHttp extends GenericoHttp {
 	 */
 	public FormaPagamentoHttp(Date ultimaAtualizacao, int idUsuario) {
 		super(ultimaAtualizacao, idUsuario);
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param ultimaAtualizacao

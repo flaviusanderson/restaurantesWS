@@ -13,21 +13,18 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-
-import br.com.informati.restaurantes.http.CategoriaHttp;
 import br.com.informati.restaurantes.http.MesaHttp;
-import br.com.informati.restaurantes.modelo.CategoriaEntity;
 import br.com.informati.restaurantes.modelo.MesaEntity;
-import br.com.informati.restaurantes.modelo.RestauranteEntity;
 import br.com.informati.restaurantes.repositorio.MesaDAO;
 
 /**
  * @author Flavius
  *
  */
+@Path("/mesa")
 public class MesaController implements IGenericoController<MesaHttp> {
 
-	public final MesaDAO repositorio = new MesaDAO();
+	private final MesaDAO repositorio = new MesaDAO();
 
 	@Override
 	@POST

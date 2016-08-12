@@ -55,7 +55,6 @@ public class CategoriaHttp extends GenericoHttp {
 	 */
 	public CategoriaHttp() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param ultimaAtualizacao
@@ -63,7 +62,6 @@ public class CategoriaHttp extends GenericoHttp {
 	 */
 	public CategoriaHttp(Date ultimaAtualizacao, int idUsuario) {
 		super(ultimaAtualizacao, idUsuario);
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param ultimaAtualizacao

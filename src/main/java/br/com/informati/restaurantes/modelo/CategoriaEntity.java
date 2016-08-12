@@ -45,7 +45,6 @@ public class CategoriaEntity extends GenericoEntity {
 	 */
 	public CategoriaEntity() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

@@ -63,7 +63,6 @@ public class ProdutoHttp extends GenericoHttp {
 	 */
 	public ProdutoHttp() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -72,7 +71,6 @@ public class ProdutoHttp extends GenericoHttp {
 	 */
 	public ProdutoHttp(Date ultimaAtualizacao, int idUsuario) {
 		super(ultimaAtualizacao, idUsuario);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

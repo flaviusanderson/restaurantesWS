@@ -6,24 +6,17 @@ package br.com.informati.restaurantes.controller;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-
 import br.com.informati.restaurantes.http.CategoriaHttp;
-import br.com.informati.restaurantes.http.RestauranteHttp;
-import br.com.informati.restaurantes.http.UsuarioHttp;
 import br.com.informati.restaurantes.modelo.CategoriaEntity;
-import br.com.informati.restaurantes.modelo.PerfilEntity;
 import br.com.informati.restaurantes.modelo.RestauranteEntity;
-import br.com.informati.restaurantes.modelo.UsuarioEntity;
 import br.com.informati.restaurantes.repositorio.CategoriaDAO;
 import br.com.informati.restaurantes.repositorio.RestauranteDAO;
-import br.com.informati.restaurantes.repositorio.UsuarioDAO;
 
 /**
  * @author Flavius

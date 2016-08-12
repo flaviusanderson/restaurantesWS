@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 import br.com.informati.restaurantes.modelo.ClienteEntity;
 import br.com.informati.restaurantes.modelo.PedidoEntity;
-import br.com.informati.restaurantes.modelo.ProdutoEntity;
 
 /**
  * @author Flavius
@@ -53,7 +52,6 @@ public class ClienteHttp extends GenericoHttp {
 	 */
 	public ClienteHttp() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param ultimaAtualizacao
@@ -61,7 +59,6 @@ public class ClienteHttp extends GenericoHttp {
 	 */
 	public ClienteHttp(Date ultimaAtualizacao, int idUsuario) {
 		super(ultimaAtualizacao, idUsuario);
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param ultimaAtualizacao

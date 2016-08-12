@@ -13,20 +13,22 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-
 import br.com.informati.restaurantes.http.ClienteHttp;
-import br.com.informati.restaurantes.http.MesaHttp;
+import br.com.informati.restaurantes.http.PedidoHttp;
 import br.com.informati.restaurantes.modelo.ClienteEntity;
-import br.com.informati.restaurantes.modelo.MesaEntity;
+import br.com.informati.restaurantes.modelo.PedidoEntity;
 import br.com.informati.restaurantes.repositorio.ClienteDAO;
+import br.com.informati.restaurantes.repositorio.PedidoDAO;
 
 /**
  * @author Flavius
  *
  */
+@Path("/cliente")
 public class ClienteController implements IGenericoController<ClienteHttp> {
-	
-	public final ClienteDAO repositorio = new ClienteDAO();
+
+	private final ClienteDAO repositorio = new ClienteDAO();
+	private final PedidoDAO repositorioPedido = new PedidoDAO();
 
 	@Override
 	@POST
@@ -42,10 +44,16 @@ public class ClienteController implements IGenericoController<ClienteHttp> {
 			entidade.setId(cliente.getId());
 			entidade.setNome(cliente.getNome());
 			entidade.setCpf(cliente.getCpf());
-			
-			//TODO 
-			//entidade.setPedidos(pedidos);
-			
+
+			List<PedidoEntity> listaPedidos = new ArrayList<PedidoEntity>();
+			for (PedidoHttp pedidoHttp : cliente.getPedidos()) {
+				PedidoEntity pedidoEntity = new PedidoEntity();
+				pedidoEntity = repositorioPedido.consultarPorId(pedidoHttp.getId());
+				if (pedidoEntity != null)
+					listaPedidos.add(pedidoEntity);
+			}
+			entidade.setPedidos(listaPedidos);
+
 			entidade.setIdUsuario(cliente.getIdUsuario());
 			entidade.setUltimaAtualizacao(new Timestamp(cliente.getUltimaAtualizacao().getTime()));
 
@@ -74,10 +82,16 @@ public class ClienteController implements IGenericoController<ClienteHttp> {
 			entidade.setId(cliente.getId());
 			entidade.setNome(cliente.getNome());
 			entidade.setCpf(cliente.getCpf());
-			
-			//TODO 
-			//entidade.setPedidos(pedidos);
-			
+
+			List<PedidoEntity> listaPedidos = new ArrayList<PedidoEntity>();
+			for (PedidoHttp pedidoHttp : cliente.getPedidos()) {
+				PedidoEntity pedidoEntity = new PedidoEntity();
+				pedidoEntity = repositorioPedido.consultarPorId(pedidoHttp.getId());
+				if (pedidoEntity != null)
+					listaPedidos.add(pedidoEntity);
+			}
+			entidade.setPedidos(listaPedidos);
+
 			entidade.setIdUsuario(cliente.getIdUsuario());
 			entidade.setUltimaAtualizacao(new Timestamp(cliente.getUltimaAtualizacao().getTime()));
 

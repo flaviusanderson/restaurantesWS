@@ -25,110 +25,110 @@ import br.com.informati.restaurantes.repositorio.PerfilDAO;
 public class PerfilController implements IGenericoController<PerfilHttp> {
 
 	private final PerfilDAO repositorio = new PerfilDAO();
-	
-	@POST	
+
+	@POST
 	@Consumes("application/json; charset=UTF-8")
 	@Produces("application/json; charset=UTF-8")
 	@Path("/cadastrar")
-	public String cadastrar(PerfilHttp perfilHttp){
-		
+	public String cadastrar(PerfilHttp perfilHttp) {
+
 		String msg = "Registro cadastrado com sucesso!";
 		PerfilEntity entidade = new PerfilEntity();
-		
-		try{
-			
+
+		try {
+
 			entidade.setNome(perfilHttp.getNome());
 			entidade.setIdUsuario(perfilHttp.getIdUsuario());
-			
+
 			repositorio.salvar(entidade);
-			
-		}catch(Exception e){
-			
+
+		} catch (Exception e) {
+
 			msg = "Erro ao cadastrar um registro " + e.getMessage();
 		}
-		
+
 		return msg;
 	}
-	
+
 	@POST
 	@Produces("application/json; charset=UTF-8")
-	@Consumes("application/json; charset=UTF-8")	
+	@Consumes("application/json; charset=UTF-8")
 	@Path("/atualizar")
-	public String atualizar(PerfilHttp perfilHttp){
- 
+	public String atualizar(PerfilHttp perfilHttp) {
+
 		String msg = "Registro atualizado com sucesso!";
 		PerfilEntity entidade = new PerfilEntity();
- 
+
 		try {
- 
+
 			entidade.setId(perfilHttp.getId());
 			entidade.setNome(perfilHttp.getNome());
-			entidade.setUltimaAtualizacao( new Timestamp(perfilHttp.getUltimaAtualizacao().getTime()));
+			entidade.setUltimaAtualizacao(new Timestamp(perfilHttp.getUltimaAtualizacao().getTime()));
 			entidade.setIdUsuario(perfilHttp.getIdUsuario());
- 
+
 			repositorio.atualizar(entidade);
- 
+
 		} catch (Exception e) {
- 
+
 			msg = "Erro ao alterar o registro " + e.getMessage();
- 
+
 		}
-		
+
 		return msg;
- 
+
 	}
-	
+
 	@GET
 	@Produces("application/json; charset=UTF-8")
 	@Path("/consultarTodos")
-	public List<PerfilHttp> consultarTodos(){
- 
-		List<PerfilHttp> listaPerfisHttp =  new ArrayList<PerfilHttp>();
- 
+	public List<PerfilHttp> consultarTodos() {
+
+		List<PerfilHttp> listaPerfisHttp = new ArrayList<PerfilHttp>();
+
 		List<PerfilEntity> listaEntityPerfis = repositorio.consultarTodos();
- 
+
 		for (PerfilEntity entidade : listaEntityPerfis) {
- 
+
 			listaPerfisHttp.add(PerfilHttp.converterEntity(entidade));
-			
+
 		}
- 
+
 		return listaPerfisHttp;
 	}
-	
-	
+
 	@GET
 	@Produces("application/json; charset=UTF-8")
 	@Path("/consultarPorId/{id}")
-	public PerfilHttp consultarPorId(@PathParam("id") int id){
- 
+	public PerfilHttp consultarPorId(@PathParam("id") int id) {
+
+		PerfilHttp aux = new PerfilHttp();
+
 		PerfilEntity entidade = repositorio.consultarPorId(id);
- 
-		/*if(entidade != null)
-			return new PerfilHttp(entidade.getId(), entidade.getNome(), entidade.getUltimaAtualizacao(), entidade.getIdUsuario());
- */
-		return null;
+
+		if (entidade != null) {
+			aux = PerfilHttp.converterEntity(entidade);
+		}
+
+		return aux;
 	}
-	
-	
+
 	@DELETE
 	@Produces("application/json; charset=UTF-8")
-	@Path("/excluir/{id}")	
-	public String excluir(@PathParam("id") int id){
- 
+	@Path("/excluir/{id}")
+	public String excluir(@PathParam("id") int id) {
+
 		String msg = "Registro excluído com sucesso!";
 		try {
- 
+
 			repositorio.excluir(id);
- 
+
 		} catch (Exception e) {
- 
+
 			msg = "Erro ao excluir o registro! " + e.getMessage();
 		}
-		
+
 		return msg;
- 
+
 	}
-	
-	
+
 }

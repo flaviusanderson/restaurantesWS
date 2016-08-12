@@ -6,9 +6,7 @@ package br.com.informati.restaurantes.http;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import br.com.informati.restaurantes.modelo.PracaAlimentacaoEntity;
-import br.com.informati.restaurantes.modelo.ProdutoEntity;
 import br.com.informati.restaurantes.modelo.RestauranteEntity;
 
 /**
@@ -52,7 +50,6 @@ public class PracaAlimentacaoHttp extends GenericoHttp {
 	 */
 	public PracaAlimentacaoHttp() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param ultimaAtualizacao
@@ -60,7 +57,6 @@ public class PracaAlimentacaoHttp extends GenericoHttp {
 	 */
 	public PracaAlimentacaoHttp(Date ultimaAtualizacao, int idUsuario) {
 		super(ultimaAtualizacao, idUsuario);
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param ultimaAtualizacao

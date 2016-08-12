@@ -41,7 +41,6 @@ public class ItemPedidoHttp extends GenericoHttp {
 	 */
 	public ItemPedidoHttp() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param ultimaAtualizacao
@@ -49,7 +48,6 @@ public class ItemPedidoHttp extends GenericoHttp {
 	 */
 	public ItemPedidoHttp(Date ultimaAtualizacao, int idUsuario) {
 		super(ultimaAtualizacao, idUsuario);
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param ultimaAtualizacao

@@ -13,14 +13,11 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-
-import br.com.informati.restaurantes.http.CategoriaHttp;
 import br.com.informati.restaurantes.http.ItemPedidoHttp;
 import br.com.informati.restaurantes.http.ProdutoHttp;
 import br.com.informati.restaurantes.modelo.CategoriaEntity;
 import br.com.informati.restaurantes.modelo.ItemPedidoEntity;
 import br.com.informati.restaurantes.modelo.ProdutoEntity;
-import br.com.informati.restaurantes.modelo.RestauranteEntity;
 import br.com.informati.restaurantes.repositorio.CategoriaDAO;
 import br.com.informati.restaurantes.repositorio.ItemPedidoDAO;
 import br.com.informati.restaurantes.repositorio.ProdutoDAO;
@@ -29,11 +26,12 @@ import br.com.informati.restaurantes.repositorio.ProdutoDAO;
  * @author Flavius
  *
  */
+@Path("/produto")
 public class ProdutoController implements IGenericoController<ProdutoHttp> {
 
-	public final ProdutoDAO repositorio = new ProdutoDAO();
-	public final CategoriaDAO repositorioCategoria = new CategoriaDAO();
-	public final ItemPedidoDAO repositorioItem = new ItemPedidoDAO();
+	private final ProdutoDAO repositorio = new ProdutoDAO();
+	private final CategoriaDAO repositorioCategoria = new CategoriaDAO();
+	private final ItemPedidoDAO repositorioItem = new ItemPedidoDAO();
 
 	@Override
 	@POST

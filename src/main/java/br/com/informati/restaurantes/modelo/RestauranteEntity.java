@@ -60,7 +60,6 @@ public class RestauranteEntity extends GenericoEntity {
 	 */
 	public RestauranteEntity() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

@@ -4,9 +4,7 @@
 package br.com.informati.restaurantes.repositorio;
 
 import java.util.List;
-
 import br.com.informati.restaurantes.modelo.RestauranteEntity;
-import br.com.informati.restaurantes.modelo.UsuarioEntity;
 
 /**
  * @author Flavius

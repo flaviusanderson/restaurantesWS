@@ -3,10 +3,7 @@ package br.com.informati.restaurantes.http;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlRootElement;
-
-import br.com.informati.restaurantes.modelo.CategoriaEntity;
 import br.com.informati.restaurantes.modelo.PerfilEntity;
 import br.com.informati.restaurantes.modelo.UsuarioEntity;
 

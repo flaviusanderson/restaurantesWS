@@ -13,20 +13,22 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-
 import br.com.informati.restaurantes.http.FormaPagamentoHttp;
-import br.com.informati.restaurantes.http.MesaHttp;
+import br.com.informati.restaurantes.http.PagamentoHttp;
 import br.com.informati.restaurantes.modelo.FormaPagamentoEntity;
-import br.com.informati.restaurantes.modelo.MesaEntity;
+import br.com.informati.restaurantes.modelo.PagamentoEntity;
 import br.com.informati.restaurantes.repositorio.FormaPagamentoDAO;
+import br.com.informati.restaurantes.repositorio.PagamentoDAO;
 
 /**
  * @author Flavius
  *
  */
+@Path("/formaPagamento")
 public class FormaPagamentoController implements IGenericoController<FormaPagamentoHttp> {
-	
-	public final FormaPagamentoDAO repositorio = new FormaPagamentoDAO();
+
+	private final FormaPagamentoDAO repositorio = new FormaPagamentoDAO();
+	private final PagamentoDAO repositorioPagamento = new PagamentoDAO();
 
 	@Override
 	@POST
@@ -34,18 +36,24 @@ public class FormaPagamentoController implements IGenericoController<FormaPagame
 	@Consumes("application/json; charset=UTF-8")
 	@Path("/cadastrar")
 	public String cadastrar(FormaPagamentoHttp formaHttp) {
-		
+
 		String msg = "Registro atualizado com sucesso!";
 		FormaPagamentoEntity entidade = new FormaPagamentoEntity();
 
 		try {
 
-			//entidade.setId(formaHttp.getId());
+			// entidade.setId(formaHttp.getId());
 			entidade.setNome(formaHttp.getNome());
-			
-			// TODO Forma Pagamento
-			//entidade.setPagamentos(pagamentos);
-			
+
+			List<PagamentoEntity> listaPagamentos = new ArrayList<PagamentoEntity>();
+			for (PagamentoHttp pagamentoHttp : formaHttp.getPagamentos()) {
+				PagamentoEntity pagamentoEntity = new PagamentoEntity();
+				pagamentoEntity = repositorioPagamento.consultarPorId(pagamentoHttp.getId());
+				if (pagamentoEntity != null)
+					listaPagamentos.add(pagamentoEntity);
+			}
+			entidade.setPagamentos(listaPagamentos);
+
 			entidade.setIdUsuario(formaHttp.getIdUsuario());
 			entidade.setUltimaAtualizacao(new Timestamp(formaHttp.getUltimaAtualizacao().getTime()));
 
@@ -73,10 +81,16 @@ public class FormaPagamentoController implements IGenericoController<FormaPagame
 
 			entidade.setId(formaHttp.getId());
 			entidade.setNome(formaHttp.getNome());
-			
-			// TODO Forma Pagamento
-			//entidade.setPagamentos(pagamentos);
-			
+
+			List<PagamentoEntity> listaPagamentos = new ArrayList<PagamentoEntity>();
+			for (PagamentoHttp pagamentoHttp : formaHttp.getPagamentos()) {
+				PagamentoEntity pagamentoEntity = new PagamentoEntity();
+				pagamentoEntity = repositorioPagamento.consultarPorId(pagamentoHttp.getId());
+				if (pagamentoEntity != null)
+					listaPagamentos.add(pagamentoEntity);
+			}
+			entidade.setPagamentos(listaPagamentos);
+
 			entidade.setIdUsuario(formaHttp.getIdUsuario());
 			entidade.setUltimaAtualizacao(new Timestamp(formaHttp.getUltimaAtualizacao().getTime()));
 
